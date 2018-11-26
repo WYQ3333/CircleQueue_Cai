@@ -49,7 +49,7 @@ public:
 
 	/** Get the last item from the queue. */
 	int Rear() {
-		return _array[_right];
+		return _array[(_left+_size-1)%_capacity];
 	}
 
 	/** Checks whether the circular queue is empty or not. */
@@ -77,10 +77,13 @@ public:
 	}
 	void PrintQueue()
 	{
-		int i = 0;
-		for (i = 0; i < _size;i++)
+		int i = _left;
+		int k = 0;
+		while ( k < _size)
 		{
 			cout << _array[i] << " ";
+			i = (i + 1) % _capacity;
+			k++;
 		}
 	}
 	~MyCircularQueue()
